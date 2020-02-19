@@ -12,6 +12,7 @@ public class MainUI extends JFrame{
 
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
+        setJMenuBar(new MainMenuBar());
         setVisible(true);
     }
 }
