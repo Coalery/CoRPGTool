@@ -22,8 +22,6 @@ public class ZeroSizeSplitPane extends JSplitPane {
     public void doLayout() {
         super.doLayout();
 
-        System.out.println(getUI());
-
         BasicSplitPaneDivider divider = ((BasicSplitPaneUI)getUI()).getDivider();
         Rectangle bounds = divider.getBounds();
 
@@ -39,7 +37,8 @@ public class ZeroSizeSplitPane extends JSplitPane {
 
     @Override
     public void updateUI() {
-
+        setUI(new ZeroSizeDividerUI());
+        revalidate();
     }
 
     private class ZeroSizeDividerUI extends BasicSplitPaneUI {
@@ -52,7 +51,7 @@ public class ZeroSizeSplitPane extends JSplitPane {
     private class ZeroSizeDivider extends BasicSplitPaneDivider {
         public ZeroSizeDivider(BasicSplitPaneUI ui) {
             super(ui);
-            super.setBounds(null);
+            super.setBorder(null);
             setBackground(UIManager.getColor("controlShadow"));
         }
 

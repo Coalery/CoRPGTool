@@ -11,6 +11,10 @@ import java.awt.event.WindowEvent;
 public class MainUI extends JFrame{
     public MainUI() {
         super("CoRPGTool");
+
+        // Exception is alternative of exceptions(ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
+        try { UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() ); } catch (Exception e) { e.printStackTrace(); }
+
         addWindowListener(new WindowAdapter() {public void windowClosing(WindowEvent e) { System.exit(0); }});
         setDefaultLookAndFeelDecorated(true);
 
