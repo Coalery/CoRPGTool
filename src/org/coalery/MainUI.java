@@ -12,11 +12,10 @@ public class MainUI extends JFrame{
     public MainUI() {
         super("CoRPGTool");
 
-        // Exception is alternative of exceptions(ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
+        // Alternative of exceptions(ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
         try { UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() ); } catch (Exception e) { e.printStackTrace(); }
 
         addWindowListener(new WindowAdapter() {public void windowClosing(WindowEvent e) { System.exit(0); }});
-        setDefaultLookAndFeelDecorated(true);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize((int)(screenSize.width * 0.75f), (int)(screenSize.height * 0.75f));
@@ -25,8 +24,7 @@ public class MainUI extends JFrame{
         PropertyTab propertyTab = new PropertyTab();
 
         ZeroSizeSplitPane map_property_SplitPane = new ZeroSizeSplitPane(JSplitPane.HORIZONTAL_SPLIT, mapTab, propertyTab);
-        map_property_SplitPane.setOneTouchExpandable(true);
-        map_property_SplitPane.setDividerLocation((int)(getWidth() * 0.75f));
+        map_property_SplitPane.setResizeWeight(0.8);
 
         mapTab.setMinimumSize(new Dimension(150, 0));
         propertyTab.setMinimumSize(new Dimension(150, 0));
