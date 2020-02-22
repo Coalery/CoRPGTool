@@ -23,8 +23,7 @@ public class MainUI extends JFrame{
         MapTab mapTab = new MapTab();
         PropertyTab propertyTab = new PropertyTab();
 
-        ZeroSizeSplitPane map_property_SplitPane = new ZeroSizeSplitPane(JSplitPane.HORIZONTAL_SPLIT, mapTab, propertyTab);
-        map_property_SplitPane.setResizeWeight(0.8);
+        ZeroSizeSplitPane map_property_SplitPane = new ZeroSizeSplitPane(ZeroSizeSplitPane.ORIENTATION_VERTICAL, mapTab, propertyTab, 0.8f);
 
         mapTab.setMinimumSize(new Dimension(150, 0));
         propertyTab.setMinimumSize(new Dimension(150, 0));
