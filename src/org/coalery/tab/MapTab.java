@@ -1,11 +1,12 @@
 package org.coalery.tab;
 
-import javax.swing.*;
+import java.awt.*;
 
 public class MapTab extends DefaultTab {
 
     public MapTab() {
         setLayout(null);
+        setBackground(Color.BLACK);
     }
 
 }
