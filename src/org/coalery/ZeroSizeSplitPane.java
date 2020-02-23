@@ -9,7 +9,7 @@ public class ZeroSizeSplitPane extends JComponent {
     public static final int ORIENTATION_VERTICAL = 1;
     public static final int ORIENTATION_HORIZONTAL = 2;
 
-    private final Color dividerColor = Color.GRAY;
+    private final Color dividerColor = Color.RED;
 
     private Component leftComponent;
     private Component rightComponent;
@@ -40,18 +40,25 @@ public class ZeroSizeSplitPane extends JComponent {
                 repaint();
             }
         });
+        setLayout(null);
+
+        add(dividerHandle);
         add(leftComponent);
         add(rightComponent);
-        add(dividerHandle);
+
+        setComponentZOrder(dividerHandle, 0);
+        setComponentZOrder(leftComponent, 1);
+        setComponentZOrder(rightComponent, 2);
     }
 
     @Override
     public void paint(Graphics g) {
+        super.paint(g);
         g.setColor(dividerColor);
         if(orientation == ORIENTATION_VERTICAL) {
             if(dividerLocation == -1) dividerLocation = (int)(getWidth() * proportion);
-            leftComponent.setBounds(1, 1, 50, 50);
-            rightComponent.setBounds(1, 1, 50, 50);
+            leftComponent.setBounds(0, 0, dividerLocation, getHeight());
+            rightComponent.setBounds(dividerLocation + 1, 0, getWidth() - dividerLocation - 1, getHeight());
             dividerHandle.setBounds(dividerLocation - dividerSize - 1, 0, dividerSize * 2 + 1, getHeight());
             dividerHandle.setCursor(new Cursor(Cursor.E_RESIZE_CURSOR));
             g.drawLine(dividerLocation, 0, dividerLocation, getHeight());
