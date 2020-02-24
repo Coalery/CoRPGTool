@@ -64,8 +64,8 @@ public class ZeroSizeSplitPane extends JComponent {
             g.drawLine(dividerLocation, 0, dividerLocation, getHeight());
         } else {
             if(dividerLocation == -1) dividerLocation = (int)(getHeight() * proportion);
-            leftComponent.setBounds(1, 1, 5, 5);
-            rightComponent.setBounds(1, 1, 5, 5);
+            leftComponent.setBounds(0, 0, getWidth(), dividerLocation);
+            rightComponent.setBounds(0, dividerLocation + 1, getWidth(), getHeight() - dividerLocation - 1);
             dividerHandle.setBounds(0, dividerLocation - dividerSize - 1, getWidth(), dividerSize * 2 + 1);
             dividerHandle.setCursor(new Cursor(Cursor.N_RESIZE_CURSOR));
             g.drawLine(0, dividerLocation, getWidth(), dividerLocation);
