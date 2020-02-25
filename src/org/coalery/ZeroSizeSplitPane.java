@@ -18,14 +18,15 @@ public class ZeroSizeSplitPane extends JComponent {
     private final int dividerSize = 5; // TODO dividerSize have to change each resolution(Screen Size).
 
     private int orientation;
-    private int dividerLocation = -1;
     private float proportion;
+    private float leastproportion;
 
-    public ZeroSizeSplitPane(int orientation, Component leftComponent, Component rightComponent, float proportion) {
+    public ZeroSizeSplitPane(int orientation, Component leftComponent, Component rightComponent, float proportion, float leastProportion) {
         this.orientation = orientation;
         this.leftComponent = leftComponent;
         this.rightComponent = rightComponent;
         this.proportion = proportion;
+        this.leastproportion = leastProportion;
 
         dividerHandle = new JPanel();
         dividerHandle.addMouseMotionListener(new MouseMotionAdapter() {
@@ -34,9 +35,9 @@ public class ZeroSizeSplitPane extends JComponent {
                 Point point = MouseInfo.getPointerInfo().getLocation();
                 SwingUtilities.convertPointFromScreen(point, ZeroSizeSplitPane.this);
                 if(orientation == ORIENTATION_VERTICAL)
-                    dividerLocation = point.x;
+                    setProportion(point.x / (float)getWidth());
                 else
-                    dividerLocation = point.y;
+                    setProportion(point.y / (float)getHeight());
                 repaint();
             }
         });
@@ -56,14 +57,14 @@ public class ZeroSizeSplitPane extends JComponent {
         super.paint(g);
         g.setColor(dividerColor);
         if(orientation == ORIENTATION_VERTICAL) {
-            if(dividerLocation == -1) dividerLocation = (int)(getWidth() * proportion);
+            int dividerLocation = (int)(getWidth() * proportion);
             leftComponent.setBounds(0, 0, dividerLocation, getHeight());
             rightComponent.setBounds(dividerLocation + 1, 0, getWidth() - dividerLocation - 1, getHeight());
             dividerHandle.setBounds(dividerLocation - dividerSize - 1, 0, dividerSize * 2 + 1, getHeight());
             dividerHandle.setCursor(new Cursor(Cursor.E_RESIZE_CURSOR));
             g.drawLine(dividerLocation, 0, dividerLocation, getHeight());
         } else {
-            if(dividerLocation == -1) dividerLocation = (int)(getHeight() * proportion);
+            int dividerLocation = (int)(getHeight() * proportion);
             leftComponent.setBounds(0, 0, getWidth(), dividerLocation);
             rightComponent.setBounds(0, dividerLocation + 1, getWidth(), getHeight() - dividerLocation - 1);
             dividerHandle.setBounds(0, dividerLocation - dividerSize - 1, getWidth(), dividerSize * 2 + 1);
@@ -82,9 +83,11 @@ public class ZeroSizeSplitPane extends JComponent {
     public int getOrientation() { return orientation; }
     public void setOrientation(int orientation) { this.orientation = orientation; }
 
-    public int getDividerLocation() { return dividerLocation; }
-    public void setDividerLocation(int dividerLocation) { this.dividerLocation = dividerLocation; }
-
     public float getProportion() { return proportion; }
-    public void setProportion(float proportion) { this.proportion = proportion; }
+    public void setProportion(float proportion) {
+        if(proportion < 0.0f + leastproportion) this.proportion = leastproportion;
+        else if(proportion > 0.9999f - leastproportion) this.proportion = 0.9999f - leastproportion;
+        else this.proportion = proportion;
+    }
+
 }
