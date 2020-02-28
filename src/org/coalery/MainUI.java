@@ -1,5 +1,7 @@
 package org.coalery;
 
+import org.coalery.tab.ConsoleTab;
+import org.coalery.tab.FileTab;
 import org.coalery.tab.MapTab;
 import org.coalery.tab.PropertyTab;
 
@@ -21,14 +23,22 @@ public class MainUI extends JFrame{
         setSize((int)(screenSize.width * 0.75f), (int)(screenSize.height * 0.75f));
 
         MapTab mapTab = new MapTab();
+        ConsoleTab consoleTab = new ConsoleTab();
+
+        Component[] middlePaneComponents = { mapTab, consoleTab };
+        float[] middlePaneProportions = { 0.7f, 1.0f };
+
+        FileTab fileTab = new FileTab();
+        ZeroSizeSplitPane middlePane = new ZeroSizeSplitPane(ZeroSizeSplitPane.ORIENTATION_HORIZONTAL, middlePaneComponents, middlePaneProportions);
         PropertyTab propertyTab = new PropertyTab();
 
-        Component[] components = { mapTab, propertyTab };
-        float[] proportions = { 0.8f, 1.0f };
+        Component[] mainPaneComponents = { fileTab, middlePane, propertyTab };
+        float[] mainPaneProportions = { 0.2f, 0.8f, 1.0f };
 
-        ZeroSizeSplitPane map_property_SplitPane = new ZeroSizeSplitPane(ZeroSizeSplitPane.ORIENTATION_VERTICAL, components, proportions);
+        ZeroSizeSplitPane mainPane = new ZeroSizeSplitPane(ZeroSizeSplitPane.ORIENTATION_VERTICAL, mainPaneComponents, mainPaneProportions);
 
-        add(map_property_SplitPane);
+        setBackground(Color.CYAN);
+        add(mainPane);
 
         setJMenuBar(new MainMenuBar());
         setVisible(true);
