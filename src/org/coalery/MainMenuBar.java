@@ -14,12 +14,18 @@ public class MainMenuBar extends JMenuBar {
             file.add(file_Load);
         }
 
+        JMenu settings = new JMenu("Settings");
+        { // Settings Menu Region
+
+        }
+
         JMenu help = new JMenu("Help");
         { // Help Menu Region
 
         }
 
         add(file);
+        add(settings);
         add(help);
     }
 
