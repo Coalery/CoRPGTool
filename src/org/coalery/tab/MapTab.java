@@ -1,11 +1,11 @@
 package org.coalery.tab;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 
 public class MapTab extends DefaultTab {
 
+    private Point lastPoint;
     private Point standardPoint;
     private int cellSize = 50;
 
@@ -16,6 +16,7 @@ public class MapTab extends DefaultTab {
 
         standardPoint = new Point(0, 0);
 
+        addMouseListener(new ReleaseListener());
         addMouseMotionListener(new DragListener());
     }
 
@@ -40,8 +41,6 @@ public class MapTab extends DefaultTab {
     }
 
     private class DragListener extends MouseMotionAdapter {
-        private Point lastPoint;
-
         @Override
         public void mouseDragged(MouseEvent e) {
             if(lastPoint == null)
@@ -53,6 +52,13 @@ public class MapTab extends DefaultTab {
                 lastPoint = e.getPoint();
                 MapTab.this.repaint();
             }
+        }
+    }
+
+    private class ReleaseListener extends MouseAdapter {
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            lastPoint = null;
         }
     }
 }
