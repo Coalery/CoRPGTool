@@ -7,7 +7,7 @@ public class FileTab extends DefaultTab {
     public FileTab() {
         super();
         setLayout(null);
-        setBackground(Color.MAGENTA);
+        setBackground(Color.GRAY);
     }
 
 }
