@@ -53,9 +53,8 @@ public class ZeroSizeSplitPane extends JComponent {
             for(int i=0; i<components.length - 1; i++) {
                 int dividerLocation = (int)(getWidth() * weight[i]);
                 components[i].setBounds(componentLocation, 0, dividerLocation - componentLocation, getHeight());
-                dividerHandles[i].setBounds(dividerLocation - dividerSize - 1, 0, dividerSize * 2 + 1, getHeight());
-//                g.drawLine(dividerLocation, 0, dividerLocation, getHeight());
-                componentLocation = dividerLocation + 1;
+                dividerHandles[i].setBounds(dividerLocation - dividerSize, 0, dividerSize * 2, getHeight());
+                componentLocation = dividerLocation;
             }
             components[components.length - 1].setBounds(componentLocation, 0, getWidth() - componentLocation, getHeight());
         } else {
@@ -63,8 +62,7 @@ public class ZeroSizeSplitPane extends JComponent {
                 int dividerLocation = (int)(getHeight() * weight[i]);
                 components[i].setBounds(0, componentLocation, getWidth(), dividerLocation - componentLocation);
                 dividerHandles[i].setBounds(0, dividerLocation - dividerSize - 1, getWidth(), dividerSize * 2 + 1);
-//                g.drawLine(0, dividerLocation, getWidth(), dividerLocation);
-                componentLocation += dividerLocation + 1;
+                componentLocation += dividerLocation;
             }
             components[components.length - 1].setBounds(0, componentLocation, getWidth(), getHeight() - componentLocation);
         }
