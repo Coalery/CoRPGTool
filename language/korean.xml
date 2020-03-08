@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<string>
+    <FileMenu>파일</FileMenu>
+    <FileMenu_Load>불러오기</FileMenu_Load>
+    <FileMenu_Save>저장</FileMenu_Save>
+
+    <SettingsMenu>설정</SettingsMenu>
+    <HelpMenu>도움말</HelpMenu>
+</string>

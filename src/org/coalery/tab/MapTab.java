@@ -1,9 +1,15 @@
 package org.coalery.tab;
 
+import org.coalery.map.MapCell;
+
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class MapTab extends DefaultTab {
+
+    private MapCell[][] map;
 
     private Point lastPoint;
     private Point standardPoint;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<string>
+    <FileMenu>File</FileMenu>
+    <FileMenu_Load>Load</FileMenu_Load>
+    <FileMenu_Save>Save</FileMenu_Save>
+
+    <SettingsMenu>Settings</SettingsMenu>
+    <HelpMenu>Help</HelpMenu>
+</string>
