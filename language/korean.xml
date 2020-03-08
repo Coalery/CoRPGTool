@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <string>
+    <!-- Menu -->
     <FileMenu>파일</FileMenu>
     <FileMenu_Load>불러오기</FileMenu_Load>
     <FileMenu_Save>저장</FileMenu_Save>
 
     <SettingsMenu>설정</SettingsMenu>
     <HelpMenu>도움말</HelpMenu>
+
+    <!-- DirectorySelector -->
+    <DirectorySelector_Title>디렉토리 선택</DirectorySelector_Title>
 </string>
