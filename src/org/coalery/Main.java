@@ -6,7 +6,7 @@ import org.coalery.util.DirectorySelector;
 
 public class Main {
     public static void main(String[] args) {
-        LanguageManager.init(Language.KOREAN, "language/");
+        LanguageManager.init(Language.ENGLISH, "language/");
         System.out.println(DirectorySelector.select(null).getAbsolutePath());
         javax.swing.SwingUtilities.invokeLater(MainUI::new);
     }
