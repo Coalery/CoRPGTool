@@ -8,6 +8,12 @@
     <SettingsMenu>Settings</SettingsMenu>
     <HelpMenu>Help</HelpMenu>
 
+    <!-- MessageShow -->
+    <MessageShow_Error>Error</MessageShow_Error>
+
     <!-- DirectorySelector -->
+    <DirectorySelector_CantFindRoot>Can't find root.</DirectorySelector_CantFindRoot>
     <DirectorySelector_Title>Directory Select</DirectorySelector_Title>
+    <DirectorySelector_SelectButton>Select</DirectorySelector_SelectButton>
+    <DirectorySelector_CancelButton>Cancel</DirectorySelector_CancelButton>
 </string>

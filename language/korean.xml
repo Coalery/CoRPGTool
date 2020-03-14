@@ -8,6 +8,12 @@
     <SettingsMenu>설정</SettingsMenu>
     <HelpMenu>도움말</HelpMenu>
 
+    <!-- MessageShow -->
+    <MessageShow_Error>오류</MessageShow_Error>
+
     <!-- DirectorySelector -->
+    <DirectorySelector_CantFindRoot>루트를 찾을 수 없습니다.</DirectorySelector_CantFindRoot>
     <DirectorySelector_Title>디렉토리 선택</DirectorySelector_Title>
+    <DirectorySelector_SelectButton>선택</DirectorySelector_SelectButton>
+    <DirectorySelector_CancelButton>취소</DirectorySelector_CancelButton>
 </string>
